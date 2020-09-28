@@ -1,26 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Amplify, { API, graphqlOperation } from "aws-amplify";
+// import awsExports from "./aws-exports";
+// Amplify.configure(awsExports);
+// import {} from "./graphql/mutations";
+// import {} from "./graphql/queries";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button id="plus-button" class="plus-button">
+        +
+      </button>
+      <div class="container"></div>
+
+      <div id="create-modal" class="modal">
+        <button id="close-create-button" class="close-button">
+          x
+        </button>
+        <h2>Add Gif</h2>
+        <form id="create-form">
+          <label for="altText">Alt Text</label>
+          <input type="text" name="altText" id="altText" />
+          <label for="url">URL</label>
+          <input type="text" name="url" id="url" />
+          <input type="submit" value="Create" />
+        </form>
+      </div>
+
+      <div id="edit-modal" class="modal">
+        <div class="row">
+          <button id="close-edit-button" class="close-button">
+            x
+          </button>
+          <button id="delete-button" class="delete-button">
+            Delete Gif
+          </button>
+        </div>
+        <h2 id="edit-title">Update</h2>
+        <form id="edit-form">
+          <label for="altText">Alt Text</label>
+          <input type="text" name="altText" id="edit-altText" />
+          <label for="url">URL</label>
+          <input type="text" name="url" id="edit-url" />
+          <input type="submit" value="Edit" />
+        </form>
+      </div>
+    </>
   );
-}
+};
 
 export default App;
